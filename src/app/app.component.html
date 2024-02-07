@@ -1,0 +1,25 @@
+<!-- Method1: Parent to Child via @Input -->
+<!-- 
+    <h1>{{forParent}}</h1>
+    <app-child [inputFromParent]="forChild"></app-child> 
+-->
+
+
+<!-- Method 2: Child to Parent via @Output and EventEmitter -->
+<!-- 
+    <h1>{{forParent}}</h1>
+    <app-child (updatedName)="GetData($event)"></app-child> 
+-->
+
+<!--  Method3: Child to Parent via @ViewChild -->
+<!-- 
+    <h1>{{forParent}}</h1>
+    <app-child></app-child> 
+    <button type="button" (click)="ButtonClick()">Click</button> 
+-->
+
+<!-- Method 4: Unrelated Components via a Service -->
+<!-- <h1>{{message}}</h1> -->
+<router-outlet></router-outlet>
+
+
