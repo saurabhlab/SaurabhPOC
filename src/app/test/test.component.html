@@ -1,13 +1,17 @@
-<!-- <h1>This is from test component!!!</h1> -->
-<!-- <h1>{{message}}</h1> -->
-<h1>Parent component </h1>
+<div class="col-lg-12">
+    <h1>Parent </h1>
+    <div class="col-lg-3">
+        <form (ngSubmit)='parentSave()' [formGroup]='parentForm' novalidate>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName='name' type="text" class="form-control" placeholder="Enter Name" />
+            </div>
 
-<button type="button" class="btn btn-success" (click)="updateMessage(true)">Submit</button>
-
-
-<!-- <a [routerLink]="['/child']">go to child</a> -->
+            <button class="btn btn-success">Save</button>
+        </form>
+    </div>
+</div>
 <hr>
-
-<app-child></app-child>
-
-<!-- --https://www.infragistics.com/community/blogs/b/infragistics/posts/how-to-create-your-first-angular-reactive-form -->
+<div>
+    <app-child></app-child>
+</div>

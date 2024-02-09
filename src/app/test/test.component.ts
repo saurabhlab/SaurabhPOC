@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import { LoginForm } from '../Modal/LoginForm';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ParentData } from '../Modal/ParentData';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -9,45 +10,34 @@ import { LoginForm } from '../Modal/LoginForm';
 })
 export class TestComponent implements OnInit {
 
-  //Mehod:4
-  message:string="";
-  constructor(private appService:AppService){
-    //this.appService.getMessage.subscribe(msg => this.message = msg);;
+  constructor(private appService: AppService) {
   }
 
   ngOnInit(): void {
   }
 
-  loginormData : any;
-callApi(val:LoginForm){
-  console.log("callApi method called", val);
-}
+  parentForm = new FormGroup({
+    name: new FormControl(null, Validators.required)
+  })
 
-  updateMessage(val :boolean){
-debugger
+  loginormData: any;
 
-    this.appService.getChFormVal.subscribe(msg => 
-     // alert("message from child in Parent:- Email:- " + msg.email +  "  & Password:- " + msg.password )
-      // this.message = msg
-      {
-      console.log("message from child in Parent:- Email:- " + msg.email +  "  & Password:- " + msg.password );
+  callApi(data: ParentData) {
+    console.log("Api called", data);
+  }
+
+  data: ParentData = {};
+  parentSave() {
+    this.appService.getChFormVal.subscribe(msg => {
       this.loginormData = msg;
-      }
-      );;
-
-      if(val){
-        this.callApi(this.loginormData) 
+    }
+    );
+    this.data = {
+      Name: this.parentForm.value.name,
+      loginForm: this.loginormData
     }
 
-
-    //this.appService.setMessage('This is updated msg from test compoenent.');
-    
-    // this.appService.getMessage.subscribe(msg => 
-    //   alert("message from child:- " + msg)
-    //   // this.message = msg
-      
-    //   );;
-
+    this.callApi(this.data)
 
   }
 

@@ -7,20 +7,7 @@ import {LoginForm } from './Modal/LoginForm'
 })
 
 
-export class AppService {
- 
-  
-  private message = new BehaviorSubject<string>('Initial message!!!');
-  getMessage = this.message.asObservable();
- 
-  constructor() {  }
-
-  setMessage(message: string) {
-    this.message.next(message)
-  }
-
-
-  //-----new
+export class AppService { 
 
   private chForm  = new BehaviorSubject<LoginForm>({} as LoginForm);
   getChFormVal = this.chForm.asObservable();
